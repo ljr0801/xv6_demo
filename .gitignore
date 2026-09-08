@@ -22,3 +22,24 @@ xv6.out*
 submissions/
 ph
 barrier
+
+# Local workflow configuration and container backups
+/workflow.local.json
+/ubuntu.tar
+/*.tar
+/*.tar.gz
+/.workflow-tests/
+/.workflow-test-results/
+
+# Editor / host files and Python caches
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+*.pem
+*.key
