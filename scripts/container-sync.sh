@@ -122,4 +122,7 @@ actual_branch=$(git -C "$target_dir" symbolic-ref --quiet --short HEAD) || fail 
 actual_head=$(git -C "$target_dir" rev-parse --verify HEAD) || fail 'Cannot read the final container HEAD.'
 [[ "$actual_branch" == "$branch" && "$actual_head" == "$expected_head" ]] ||
   fail 'The final container branch or HEAD differs from the requested state.'
+# FETCH_HEAD is deliberately isolated during validation. Once synchronization
+# succeeds, record that verified remote tip so git status reports it correctly.
+git -C "$target_dir" update-ref "refs/remotes/origin/$branch" "$actual_head"
 printf 'Synchronized %s at %s in %s\n' "$branch" "$actual_head" "$target_dir"

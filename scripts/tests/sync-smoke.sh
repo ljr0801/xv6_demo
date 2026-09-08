@@ -47,6 +47,7 @@ git -C "$scratch/local" push origin util >/dev/null
 expect_failure bash "$sync_script" "$scratch/remote.git" util "$target" "$first"
 [[ "$(git -C "$target" rev-parse HEAD)" == "$first" ]]
 bash "$sync_script" "$scratch/remote.git" util "$target" "$second"
+[[ "$(git -C "$target" rev-parse refs/remotes/origin/util)" == "$second" ]]
 printf 'PASS: SHA mismatch refused and fast-forward succeeds\n'
 
 git -C "$scratch/local" checkout -b lab/syscall "$first"
