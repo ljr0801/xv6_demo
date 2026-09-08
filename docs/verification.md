@@ -24,7 +24,13 @@ docker exec ubuntu bash /tmp/xv6-workflow-tests/tests/sync-smoke.sh /tmp/xv6-wor
 
 PowerShell 测试将临时仓库保留在 Git 忽略的 `.workflow-tests/`，供检查。容器测试只清理自己生成的临时测试仓库；不会操作正式 `/workspaces/xv6_own` 或原始实验目录。
 
+## 真实 GitHub 同步验证
+
+- 仓库：`https://github.com/ljr0801/xv6_demo.git`，默认分支 `util`。本地署名为 `ljr0801`，使用 GitHub 隐私邮箱，仅设置本仓库。
+- 首次工作流提交 `a713ff4f656c83012c86c66f89d3ee39212f02fc` 已通过 `push.ps1` 推送，随后通过 `pull.ps1` 从 GitHub 克隆到 `ubuntu:/workspaces/xv6_own`，提交号相同。
+- 在该正式运行目录执行 `run.ps1 -Target build -Clean` 成功；QEMU 启动到 `init: starting sh` 和 `$`，8 秒后主动结束验证。
+- 原始 `ubuntu:/root/xv6-labs-2021` 仍保持干净；`ubuntu.tar` 和个人配置未上传。
+
 ## 尚未验证
 
-- 用户 GitHub 仓库的创建、首次推送、容器端认证与真实网络拉取。等待用户填写仓库地址并配置本地 Git 身份与两端认证。
 - 实验题目正确性和 `make grade` 全部通过。当前导入的是未解题的课程基线。

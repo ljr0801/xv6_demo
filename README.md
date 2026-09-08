@@ -4,7 +4,7 @@
 
 2026-09-08 从容器 `ubuntu` 导入了原仓库的代码与 Git 历史，初始实验分支为 `util`，课程基线提交为 `f654383`；导入的基线尚未完成实验题目。课程远程仓库使用 `upstream`，你自己的 GitHub 仓库使用 `origin`。原项目介绍和许可见 [README](README) 与 [LICENSE](LICENSE)。
 
-GitHub 仓库已创建：[ljr0801/xv6_demo](https://github.com/ljr0801/xv6_demo)。本地 `origin` 已配置为该地址；首次使用仍需配置 Git 提交署名，随后执行提交、推送和容器拉取。
+GitHub 仓库：[ljr0801/xv6_demo](https://github.com/ljr0801/xv6_demo)，当前默认分支为 `util`。本机已完成初始化、首次推送和容器拉取，并验证编译与 QEMU 启动。日常可直接使用下方命令；一次性初始化步骤用于其他电脑或重新克隆的仓库。
 
 ## 仓库结构
 
@@ -189,7 +189,7 @@ git fetch upstream
 
 ## 工作流验证
 
-已在 PowerShell 7.6 和 Windows PowerShell 5.1 下验证初始化、提交和本地模拟推送；在现有 Ubuntu 容器的 Git 2.25.1 下验证首次 clone、快进、分支切换和错误保护。xv6 `util` 基线已在独立目录完整编译，并成功启动到 QEMU 中的 shell。详细范围与复现命令见 [验证记录](docs/verification.md)。GitHub 仓库已创建，真实推送与容器拉取的验证进度见验证记录；上述验证不表示实验答案通过评分。
+已在 PowerShell 7.6 和 Windows PowerShell 5.1 下验证初始化、提交和本地模拟推送；在现有 Ubuntu 容器的 Git 2.25.1 下验证首次 clone、快进、分支切换和错误保护。xv6 `util` 基线已在独立目录完整编译，并成功启动到 QEMU 中的 shell。详细范围与复现命令见 [验证记录](docs/verification.md)。真实 GitHub 推送、容器拉取、编译和 QEMU 启动也已通过；上述验证不表示实验答案通过评分。
 
 ## 常见问题
 
