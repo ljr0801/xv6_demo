@@ -20,8 +20,11 @@ function Assert-Repository {
     if (-not (Test-Path -LiteralPath (Join-Path $script:RepoRoot '.git'))) {
         throw 'Run these scripts from a clone of this repository.'
     }
-    $top = [string](Invoke-Git -Arguments @('rev-parse', '--show-toplevel'))
-    if ([IO.Path]::GetFullPath($top.Trim()) -ne [IO.Path]::GetFullPath($script:RepoRoot)) {
+    # Git emits UTF-8 paths, but Windows PowerShell may decode them using GBK
+    # or an OEM code page. Check root membership without decoding a full path.
+    $inside = [string](Invoke-Git -Arguments @('rev-parse', '--is-inside-work-tree'))
+    $prefix = [string](Invoke-Git -Arguments @('rev-parse', '--show-prefix'))
+    if ($inside.Trim() -ne 'true' -or $prefix.Length -ne 0) {
         throw 'The scripts must be inside the repository root.'
     }
 }
